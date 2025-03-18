@@ -325,7 +325,7 @@ public class RangeTest {
     /**
      * Test case: Combine two extreme ranges (infinity cases).
      * Test strategy: The combined range should handle extreme values.
-     * Expected output: Range(-∞, ∞).
+     * Expected output: Range(-âˆž, âˆž).
      */
     @Test
     public void testCombineExtremeRanges() {
@@ -557,10 +557,10 @@ public class RangeTest {
         assertEquals("Range[0.0,0.0]", shifted.toString());
     }
 
-//    @Test
-//    public void testShiftNoZeroCrossingBoundAtZero() {
-//        Range base = new Range(0.0, 2.0);
-//        Range shifted = Range.shift(base, -1.0, false);
-//        assertEquals("Range[0.0,2.0]", shifted.toString());
-//    }
+    @Test
+    public void testShiftNoZeroCrossingBoundAtZero() {
+        Range base = new Range(0.0, 2.0);
+        Range shifted = Range.shift(base, -1.0, false);
+        assertEquals("Range[0.0,2.0]", shifted.toString());
+    }
 }
