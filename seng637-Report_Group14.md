@@ -21,6 +21,43 @@ You can find the website tests in the root folder (.side files), and the updated
 
 # Report all the statistics and the mutation score for each test class
 
+By introducing small code changes (mutants), the test suite was evaluated to see how many mutants were killed (caught by tests) and how many survived (escaped detection).
+
+## For DataUtitlities Test
+
+**Mutation Summary**
+- Total Mutants Generated: 279
+- Mutants Killed: 26
+- Mutants Survived: 253
+- Mutants with NO_COVERAGE: 253
+
+<img src="media/10-DUSampleTest_PITMutation.png" alt="media/10-DUSampleTest_PITMutation.png" >
+
+
+**Covered Mutations**
+Some mutations were killed by the tests, indicating that certain aspects of the code were effectively tested. Key areas covered include:
+
+- Handling of null arrays.
+- Cloning and modifying 2D arrays.
+- Calculating column and row totals with edge cases.
+- Handling of arrays with NaN and Infinity values.
+
+**Surviving Mutants (NO_COVERAGE)**
+A significant number of mutants survived, indicating gaps in test coverage. The uncovered areas include:
+
+Removal of method calls (getItemCount, getValue, etc.).
+- Boundary and conditional changes (< to <=, == to !=).
+- Substitution of constants (0 to 1, 0.0 to 1.0, etc.).
+- Negation and increment/decrement operations on local variables.
+- Replacement of double operations (addition, multiplication, etc.).
+- Null and exception return mutations.
+
+**Identified Weak Spots**
+- Conditional Boundaries: Mutations that changed less than to greater than, equal to or not equal survived.
+- Double and Integer Operations: Many substitutions and arithmetic mutations went undetected.
+- Null Handling and Method Calls: Removed method calls (getItemCount, getValue) were not caught by existing tests.
+- Return Value Changes: Mutants that replaced return values with null or exceptions escaped detection.
+
 # Analysis drawn on the effectiveness of each of the test classes
 
 # A discussion on the effect of equivalent mutants on mutation score accuracy
