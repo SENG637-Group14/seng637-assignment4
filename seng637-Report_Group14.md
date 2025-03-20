@@ -185,10 +185,15 @@ The updated suite demonstrates a significant boost in mutation coverage, test st
 | **Mutation Coverage** | 56% (707/1259)    | 70% (885/1259)    | +14%        |
 | **Test Strength**   | 63% (707/1118)    | 74% (885/1197)    | +11%        |
 
+The updated test suite successfully improved mutation coverage by **14%**, increasing from **56% to 70%**, while line coverage also slightly improved. The overall test strength rose to **74%**, indicating a more effective test suite.
+
 **Key Improvements**
 1. **Increased Test Cases**  
-   - The test suite was expanded from **58** to over **100** test cases.  
-   - Targeted new test cases were designed based on the surviving and uncovered mutations.  
+   - The test suite was expanded from **58** to over **148** test cases.  
+   - Targeted new test cases were designed based on the surviving and uncovered mutations.
+   - 
+<img src="media/15-RangeNew_TS.png" alt="media/15-RangeNew_TS.png" >
+
 
 2. **Killing Surviving Mutants**  
    - Tests were written to address logical errors in methods like `expandToInclude()`, `expand()`, and `constrain()`.  
@@ -201,14 +206,6 @@ The updated suite demonstrates a significant boost in mutation coverage, test st
 4. **Improved Assertions & Edge Case Testing**  
    - More specific assertions were introduced to ensure test robustness.  
    - Additional test scenarios were included for comparison operators and mathematical operations.
-
-## Conclusion
-The updated test suite successfully improved mutation coverage by **14%**, increasing from **56% to 70%**, while line coverage also slightly improved. The overall test strength rose to **74%**, indicating a more effective test suite.
-
-Further enhancements can focus on:
-- Covering any remaining **surviving mutants**.
-- Investigating **corner cases** that could further improve robustness.
-- Performing **code refactoring** to ensure maintainability.
 
 The new test suite significantly enhances the reliability and effectiveness of the `Range` class.
 ```
