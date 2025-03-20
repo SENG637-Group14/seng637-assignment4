@@ -171,6 +171,48 @@ Removal of method calls (getItemCount, getValue, etc.).
 
 
 
+## Improved Test Suite Report for `Range` Class
+
+The updated suite demonstrates a significant boost in mutation coverage, test strength, and overall code coverage.
+
+<img src="media/14-Range__Improved.png" alt="media/14-Range__Improved.png" >
+
+**Coverage Comparison**
+
+| Metric              | Previous Coverage | Updated Coverage | Improvement |
+|---------------------|------------------|------------------|-------------|
+| **Line Coverage**   | 88% (91/103)      | 93% (96/103)      | +5%         |
+| **Mutation Coverage** | 56% (707/1259)    | 70% (885/1259)    | +14%        |
+| **Test Strength**   | 63% (707/1118)    | 74% (885/1197)    | +11%        |
+
+**Key Improvements**
+1. **Increased Test Cases**  
+   - The test suite was expanded from **58** to over **100** test cases.  
+   - Targeted new test cases were designed based on the surviving and uncovered mutations.  
+
+2. **Killing Surviving Mutants**  
+   - Tests were written to address logical errors in methods like `expandToInclude()`, `expand()`, and `constrain()`.  
+   - Additional assertions were added to verify edge cases and boundary conditions.
+
+3. **Handling No Coverage Mutants**  
+   - Uncovered code paths were executed by introducing new test cases.  
+   - Improved handling of special cases such as `NaN`, negative values, and edge boundaries.
+
+4. **Improved Assertions & Edge Case Testing**  
+   - More specific assertions were introduced to ensure test robustness.  
+   - Additional test scenarios were included for comparison operators and mathematical operations.
+
+## Conclusion
+The updated test suite successfully improved mutation coverage by **14%**, increasing from **56% to 70%**, while line coverage also slightly improved. The overall test strength rose to **74%**, indicating a more effective test suite.
+
+Further enhancements can focus on:
+- Covering any remaining **surviving mutants**.
+- Investigating **corner cases** that could further improve robustness.
+- Performing **code refactoring** to ensure maintainability.
+
+The new test suite significantly enhances the reliability and effectiveness of the `Range` class.
+```
+
 # Analysis drawn on the effectiveness of each of the test classes
 
 # A discussion on the effect of equivalent mutants on mutation score accuracy
