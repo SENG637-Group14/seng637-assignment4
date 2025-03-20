@@ -1,5 +1,7 @@
 package org.jfree.data;
 
+import org.jfree.data.DefaultKeyedValues2D;
+import org.jfree.data.Values2D;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.junit.Before;
@@ -382,9 +384,194 @@ public class DataUtilitiesTest {
         assertArrayEquals("Number array should match the expected values", expected, result);
     }
     
+    // New TCs
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void testCreateNumberArray_NullInput_ShouldThrowException() {
+        DataUtilities.createNumberArray(null);
+    }
+    
+    @Test
+    public void testCreateNumberArray_BoundaryValues() {
+        double[] values = {Double.MIN_VALUE, 0, Double.MAX_VALUE};
+        Number[] result = DataUtilities.createNumberArray(values);
+        assertEquals(3, result.length);
+    }
     
     
+    @Test
+    public void testNullEqualityCheck() {
+        double[][] a = {{1.0, 2.0}, {3.0, 4.0}};
+        double[][] b = null;
+
+        assertFalse("Expected false for comparison with null.", DataUtilities.equal(a, b));
+    }
+
+    @Test
+    public void testArrayWithDifferentLengths() {
+        double[][] a = {{1.0, 2.0}, {3.0, 4.0}};
+        double[][] b = {{1.0, 2.0}};
+
+        assertFalse("Expected false for arrays with different lengths.", DataUtilities.equal(a, b));
+    }
+
+    @Test
+    public void testArrayElementMismatch() {
+        double[][] a = {{1.0, 2.0}, {3.0, 4.0}};
+        double[][] b = {{1.0, 2.0}, {5.0, 4.0}};
+
+        assertFalse("Expected false for arrays with mismatched elements.", DataUtilities.equal(a, b));
+    }
+
+    @Test
+    public void testNegatedArrayComparison() {
+        double[][] a = {{1.0, -1.0}};
+        double[][] b = {{1.0, 1.0}};
+
+        assertFalse("Expected false for arrays with negated values.", DataUtilities.equal(a, b));
+    }
+
+    @Test
+    public void testLoopBoundaryWithMismatchedArray() {
+        double[][] a = {{1.0, 2.0}, {3.0, 4.0}};
+        double[][] b = {{1.0, 2.0}, {3.0, 5.0}};
+
+        assertFalse("Expected false for loop boundary condition mismatch.", DataUtilities.equal(a, b));
+    }
+
+    @Test
+    public void testArrayConversionWithBoundaryChange() {
+        double[] data = {1.0, 2.0, 3.0};
+        Number[] expected = {1.0, 2.0, 3.0};
+
+        Number[] result = DataUtilities.createNumberArray(data);
+        assertArrayEquals("Array conversion should match expected values.", expected, result);
+    }
+
     
+    @Test
+    public void testArrayConversionIncrementedField() {
+        double[] data = {1.0, 2.0, 3.0};
+        Number[] expected = {1.0, 2.0, 3.0};
+
+        Number[] result = DataUtilities.createNumberArray(data);
+        assertArrayEquals("Array conversion should not be incremented.", expected, result);
+    }
+
+    
+    @Test
+    public void testArrayConversionDecrementedField() {
+        double[] data = {1.0, 2.0, 3.0};
+        Number[] expected = {1.0, 2.0, 3.0};
+
+        Number[] result = DataUtilities.createNumberArray(data);
+        assertArrayEquals("Array conversion should not be decremented.", expected, result);
+    }
+
+    
+    @Test
+    public void testGetCumulativePercentagesBoundaryChange() {
+        DefaultKeyedValues data = new DefaultKeyedValues();
+        data.addValue("A", 5.0);
+        data.addValue("B", 3.0);
+        data.addValue("C", 2.0);
+
+        KeyedValues result = DataUtilities.getCumulativePercentages(data);
+        assertEquals("Cumulative percentage should be 1.0 for the last element.", 1.0, result.getValue("C").doubleValue(), 0.0001);
+    }
+
+    
+    @Test
+    public void testGetCumulativePercentagesWithBoundaryCondition() {
+        DefaultKeyedValues data = new DefaultKeyedValues();
+        data.addValue("X", 4.0);
+        data.addValue("Y", 1.0);
+
+        KeyedValues result = DataUtilities.getCumulativePercentages(data);
+        assertEquals("Cumulative percentage should be 1.0 for the last key.", 1.0, result.getValue("Y").doubleValue(), 0.0001);
+    }
+
+    
+    @Test
+    public void testGetCumulativePercentagesWithNegatedCondition() {
+        DefaultKeyedValues data = new DefaultKeyedValues();
+        data.addValue("A", 10.0);
+        data.addValue("B", 20.0);
+
+        KeyedValues result = DataUtilities.getCumulativePercentages(data);
+        assertEquals("Cumulative percentage should not be affected by negated condition.", 1.0, result.getValue("B").doubleValue(), 0.0001);
+    }
+
+    
+
+	@Test
+	public void testCalculateRowTotalWithZeroSubstitution() {
+	    DefaultKeyedValues2D data = new DefaultKeyedValues2D();
+	    data.addValue(1.0, "Row1", "Col1");
+	    data.addValue(2.0, "Row1", "Col2");
+	    data.addValue(3.0, "Row1", "Col3");
+	
+	    assertEquals("Expected row total for row 0.", 6.0, DataUtilities.calculateRowTotal(data, 0), 0.0001);
+	}
+	
+	@Test
+	public void testCalculateRowTotalWithNoColumnCount() {
+	    DefaultKeyedValues2D data = new DefaultKeyedValues2D();
+	    data.addValue(1.0, "Row1", "Col1");
+	
+	    assertEquals("Expected row total with valid column count.", 1.0, DataUtilities.calculateRowTotal(data, 0), 0.0001);
+	}
+	
+	@Test
+	public void testCalculateRowTotalBoundaryCases() {
+	    DefaultKeyedValues2D data = new DefaultKeyedValues2D();
+	    data.addValue(1.0, "Row1", "Col1");
+	    data.addValue(2.0, "Row1", "Col2");
+	    data.addValue(3.0, "Row1", "Col3");
+	
+	    assertEquals("Boundary check should calculate row total correctly.", 6.0, DataUtilities.calculateRowTotal(data, 0), 0.0001);
+	}
+	
+	@Test
+	public void testCalculateRowTotalWithNullValues() {
+	    DefaultKeyedValues2D data = new DefaultKeyedValues2D();
+	    data.addValue(1.0, "Row1", "Col1");
+	    data.addValue(null, "Row1", "Col2");
+	    data.addValue(3.0, "Row1", "Col3");
+	
+	    assertEquals("Row total should ignore null values.", 4.0, DataUtilities.calculateRowTotal(data, 0), 0.0001);
+	}
+	
+	@Test
+	public void testCalculateRowTotalWithNegatedCondition() {
+	    DefaultKeyedValues2D data = new DefaultKeyedValues2D();
+	    data.addValue(1.0, "Row1", "Col1");
+	    data.addValue(2.0, "Row1", "Col2");
+	    data.addValue(3.0, "Row1", "Col3");
+	
+	    assertEquals("Row total should be valid with negated conditionals.", 6.0, DataUtilities.calculateRowTotal(data, 0), 0.0001);
+	}
+	
+	@Test
+	public void testCalculateRowTotalWithSubtractionMutation() {
+	    DefaultKeyedValues2D data = new DefaultKeyedValues2D();
+	    data.addValue(5.0, "Row1", "Col1");
+	    data.addValue(2.0, "Row1", "Col2");
+	    data.addValue(3.0, "Row1", "Col3");
+	
+	    assertEquals("Row total should not be affected by subtraction mutation.", 10.0, DataUtilities.calculateRowTotal(data, 0), 0.0001);
+	}
+	
+	@Test
+	public void testCalculateRowTotalReturnReplacedWithZero() {
+	    DefaultKeyedValues2D data = new DefaultKeyedValues2D();
+	    data.addValue(1.0, "Row1", "Col1");
+	    data.addValue(2.0, "Row1", "Col2");
+	    data.addValue(3.0, "Row1", "Col3");
+	
+	    assertEquals("Row total should not be replaced with zero.", 6.0, DataUtilities.calculateRowTotal(data, 0), 0.0001);
+	}
+
     
    
 
