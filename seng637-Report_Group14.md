@@ -504,7 +504,71 @@ The new test suite significantly enhances the reliability and effectiveness of t
 
 # Analysis drawn on the effectiveness of each of the test classes
 
+### Analysis of the Effectiveness of Each Test Class
+
+In this analysis, we evaluate how well each test class works by examining its coverage, strength, and ability to detect faults, including how effectively it handles edge cases. Here's what we found:
+
+**DatautilitiesTest**
+
+1. **Test Coverage**:  
+   **DatautilitiesTest** does a solid job of covering essential functions like data parsing, transformation, and validation. It performs well for standard scenarios, but there’s room to expand coverage. Specifically, we need to test edge cases such as null values, empty datasets, or extremely large inputs to fully stress the utility functions.
+
+2. **Test Strength**:  
+   The test strength in **DatautilitiesTest** is strong, but it's not comprehensive. While the test cases handle typical scenarios effectively, we should add more tests for edge conditions. For example, we could include tests for large input data and corner cases that could cause unexpected behavior.
+
+3. **Mutant Killing**:  
+   **DatautilitiesTest** performs well in killing mutants, but we’ve identified equivalent mutants that don’t actually change the program’s behavior. These mutants weren’t detected because they behave exactly like the original code. By refining our test cases and focusing on non-obvious scenarios, we can improve the accuracy of our mutation testing.
+
+**RangeTest**
+
+1. **Test Coverage**:  
+   **RangeTest** excels in checking that values are within the correct ranges and handling boundary conditions. However, it needs further testing of edge cases, such as values at the boundaries of ranges or testing non-integer values. We also recommend including more complex range scenarios to ensure full coverage.
+
+2. **Test Strength**:  
+   The test strength in **RangeTest** is good for typical range checks but lacks testing for more complicated cases. We should test with different data types (like floats or negative numbers) and explore more edge cases to strengthen the overall test suite.
+
+3. **Mutant Killing**:  
+   **RangeTest** kills many mutants, but we still found several equivalent mutants that were not eliminated. These mutants did not change the program’s behavior, so they should have been caught. Improving the tests to better handle subtle changes in logic, especially around boundaries, will reduce the number of equivalent mutants and provide a more accurate mutation score.
+
+### Effectiveness Summary
+
+- **DatautilitiesTest**: It does a great job testing standard cases, but we need to enhance coverage by adding more edge cases. Reducing equivalent mutants will improve the reliability of the mutation score.
+  
+- **RangeTest**: It’s effective at testing ranges, but we should include more edge cases and handle a wider variety of data types. Fine-tuning the tests to catch equivalent mutants will make it more effective.
+
+Both test classes are effective, but there is definite room for improvement. By expanding coverage to include more edge cases and addressing equivalent mutants, we can ensure the tests are both thorough and precise, providing an accurate reflection of our test suite's effectiveness.
+
 # A discussion on the effect of equivalent mutants on mutation score accuracy
+
+### Effect of Equivalent Mutants on Mutation Score Accuracy
+
+In our exercises, we introduced mutants (small changes) in the code to check how well **DatautilitiesTest** and **RangeTest** identified faults. The mutation score indicated how many mutants were killed by the tests, reflecting the effectiveness of our test suites. However, **equivalent mutants** impacted the score because they didn’t change the program’s behavior, despite being syntactically different. These mutants weren't killed by the tests since they acted the same way as the original code.
+
+The presence of equivalent mutants in the tests lowered the accuracy of the mutation score. They increased the number of "live" mutants, making it seem like the test suites weren’t as effective as they really were. This gave an inaccurate view of the test suites’ quality.
+
+**Detecting Equivalent Mutants**
+
+Throughout the exercise, we focused on detecting equivalent mutants to make sure the mutation score was an accurate reflection of the test effectiveness. This involved identifying mutants that, even though they changed the code, didn’t affect the program’s behavior.
+
+**For DatautilitiesTest**:
+
+1. **Test Input Analysis**: We found equivalent mutants when small changes in how data was processed didn’t affect the final result. For example, changing the order of independent operations in a data utility function didn’t alter the outcome, which created an equivalent mutant.
+
+2. **Static Analysis**: Using **data-flow analysis**, we identified mutants that altered variables in ways that didn’t change the program’s behavior. Even if a mutant changed a variable’s value, if that variable didn’t affect the output, it was equivalent.
+
+3. **Test Execution**: Running the tests on the mutated code helped us spot equivalent mutants. For example, changing operations that didn’t affect the result (like adding a value to a constant in a non-relevant part of the code) led to the same output, indicating an equivalent mutant.
+
+
+**For RangeTest**:
+
+1. **Boundary Analysis**: In tests for validating ranges, equivalent mutants showed up when small changes to boundary conditions didn’t affect the result. For example, switching a comparison operator (`>=` to `>`) created an equivalent mutant if the test still covered all the necessary boundaries.
+
+2. **Logic Simplification**: We found equivalent mutants when simplifying conditions or operators without changing the logic. For instance, changing `if (x <= 10)` to `if (x < 11)` didn’t alter the logic, but it created an equivalent mutant.
+
+3. **Test Suite Refinement**: We detected equivalent mutants in RangeTest by identifying redundant tests. Mutants that reordered conditions or simplified logic without changing the behavior of the program were equivalent. To avoid this, the test suite should focus on key test cases that cover various scenarios, instead of repeating the same logic in different ways.
+
+We handled the equivalent mutants to ensure the mutation score was accurate. In both **DatautilitiesTest** and **RangeTest**, detecting these mutants required careful analysis, running the tests, and understanding the logic behind the code. By finding and dealing with equivalent mutants, we made sure the mutation score truly reflected the quality of our test suites.
+
 
 # A discussion of what could have been done to improve the mutation score of the test suites
 
