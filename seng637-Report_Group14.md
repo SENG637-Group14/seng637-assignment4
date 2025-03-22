@@ -594,6 +594,39 @@ Overall, mutation testing is a valuable tool for improving software quality, but
 
 # How the team work/effort was divided and managed
 
+The team worked collaboratively throughout the entire project, with each member contributing to different aspects. The project was divided and executed as follows:
+
+**Teamwork and Responsibilities**
+
+| **Task**                           | **Responsibility** |
+|-------------------------------------|--------------------|
+| **Requirement Analysis**           | All team members reviewed the **RangeTest** and **DataUtilitiesTest** code to identify key areas for mutation and GUI testing. We defined testing objectives using **PITTEST** and **Selenium**. |
+| **Test-Case Design**               | Each member designed test cases for specific methods, focusing on statement, branch, and condition coverage, and ensuring mutation testing goals were met. |
+| **Test Execution & Coverage Analysis** | The team ran tests using **PITTEST** to assess mutation coverage, analyzed the results, and refined the tests to maximize mutation detection. |
+| **Code Review & Test Consolidation** | The team reviewed test cases and mutation results, removed ineffective tests, and consolidated the most effective ones for optimal coverage. |
+
+The final report was a collaborative effort, with each team member contributing to different sections.
+
+**Communication & Collaboration**: Regular meetings (both in-person and virtual) and a shared online document kept the team updated on progress, and allowed us to address challenges together. This approach ensured effective communication and a smooth workflow throughout the project.
+
 # Difficulties encountered, challenges overcome, and lessons learned
 
+### Difficulties Encountered, Challenges Overcome, and Lessons Learned
+
+During the project, we faced a few challenges but overcame them with teamwork and problem-solving.
+
+1. **Improving Mutation Coverage**: At first, our mutation coverage wasn’t improving much. The test cases didn’t seem to make a difference. After reviewing the coverage report line by line, we found areas where our tests were lacking. By fixing these gaps and focusing on important tests, we were able to improve our mutation coverage.
+
+2. **Selenium Setup Issues**: We had trouble setting up **Selenium** with **Chrome**, as it wasn’t working correctly. After trying several solutions, we switched to **Mozilla Firefox**, which worked well. This change required some updates to our code, but it allowed us to move forward with the tests.
+
+3. **Handling Equivalent Mutants**: During mutation testing with **PITTEST**, we encountered equivalent mutants that didn’t change the program’s behavior. This made the mutation score look worse than it should have. By adjusting our tests to cover more edge cases, we managed to improve the accuracy of the mutation score.
+
+**Lessons Learned**:  
+- Thoroughly analyzing coverage reports line by line can help identify gaps and refine test cases effectively.  
+- Flexibility and adaptability are key, especially when dealing with tool-related issues (like switching from **Chrome** to **Mozilla Firefox** in Selenium).  
+- Mutation testing results can be misleading if equivalent mutants are not properly handled. Fine-tuning the tests to address such cases is crucial.  
+
 # Comments/feedback on the assignment itself
+
+- The instructions and guidelines for this assignment were clear and well-structured, making it easier to understand and implement the test cases effectively.
+- The lab exercise provided valuable experience in mutation testing, using PITEST FOR coverage analysis, and executing structured GUI test cases using Selenium.
