@@ -11,7 +11,7 @@
 | Taiwo Oyewole  |     |
 
 # Introduction
-Building upon the foundations established in our previous labs, this report details our exploration of advanced testing techniques, specifically mutation testing and web application testing. As a continuation of the previous labs, in this lab, we're doing two types of software testing. First, we're using Pitest to see how good our old tests are at finding bugs in the `Range` and `DataUtilities` code. We'll try to make our tests better so they catch more bugs (increase the "mutation score").
+Building upon the foundations established in our previous labs, this report details our exploration of advanced testing techniques, specifically mutation testing and web application testing. As a continuation of the last lab, in this lab, we're doing two types of software testing. First, we're using Pitest to see how good our old tests are at finding bugs in the `Range` and `DataUtilities` code. We'll try to make our tests better so they catch more bugs (increase the "mutation score").
 
 Second, we're using Selenium to test "Air Canada" website. We'll create tests to check if different parts of the website work correctly.
 
@@ -190,6 +190,7 @@ By introducing small code changes (mutants), the test suite was evaluated to see
 <img src="media/12-DU_TS_PITMutation.png" alt="media/12-DU_TS_PITMutation.png" >
 
 **PIT Mutations**
+
 <img src="media/1-DUSummary.png" alt="media/1-DUSummary.png" >
 
 
@@ -304,10 +305,9 @@ Removal of method calls (getItemCount, getValue, etc.).
 **Improvements and Results:**
 
 **Increased Test Cases**  
-   - The test suite was expanded from **22** to over **46** test cases.  
-   - Targeted new test cases were designed based on the surviving and uncovered mutations.
-   - 
-<img src="media/15-DUNew_TS.png" alt="media/15-DUNew_TS.png" >
+   - The test suite was expanded from **22** to over **46** test cases. Targeted new test cases were designed based on the surviving and uncovered mutations.
+
+<img src="media/16-DUNew_TS.png" alt="media/16-DUNew_TS.png" >
 
 
 **1. Line Coverage:**
@@ -438,9 +438,8 @@ To improve the test coverage and address these concerns, several strategic steps
 
 **Results**
 1. **Increased Test Cases**  
-   - The test suite was expanded from **58** to over **148** test cases.  
-   - Targeted new test cases were designed based on the surviving and uncovered mutations.
-   - 
+   - The test suite was expanded from **58** to over **148** test cases. Targeted new test cases were designed based on the surviving and uncovered mutations.
+   
 <img src="media/15-RangeNew_TS.png" alt="media/15-RangeNew_TS.png" >
 
 
