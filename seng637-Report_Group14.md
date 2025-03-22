@@ -301,8 +301,14 @@ Removal of method calls (getItemCount, getValue, etc.).
    We also improved some of the tests we had before, making sure all conditions (like checking for zero or negative values) were fully covered. This helped fill in gaps where the tests weren’t thorough enough.
 
 ---
-
 **Improvements and Results:**
+
+**Increased Test Cases**  
+   - The test suite was expanded from **22** to over **46** test cases.  
+   - Targeted new test cases were designed based on the surviving and uncovered mutations.
+   - 
+<img src="media/15-DUNew_TS.png" alt="media/15-DUNew_TS.png" >
+
 
 **1. Line Coverage:**
    Line coverage improved from **39%** to **66%**. This means **14 more lines of code** are now covered by tests. These improvements came from:
