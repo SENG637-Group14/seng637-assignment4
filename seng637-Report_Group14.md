@@ -490,9 +490,7 @@ Test strength measures how effectively the tests kill mutants. With a test stren
 
 ---
 
-
 The new test suite significantly enhances the reliability and effectiveness of the `Range` class.
-```
 
 # Analysis drawn on the effectiveness of each of the test classes
 
@@ -560,7 +558,33 @@ We handled the equivalent mutants to ensure the mutation score was accurate. In 
 
 # A discussion of what could have been done to improve the mutation score of the test suites
 
+To improve the mutation score of **RangeTest** and **DataUtilitiesTest**, we implemented the following actions below. These actions successfully improved the mutation score for both **RangeTest** and **DataUtilitiesTest**, ensuring a more accurate reflection of the test suite's effectiveness.
+
+1. **Increased Test Coverage**: We added more edge cases to the tests, ensuring that the mutants were effectively killed across various scenarios.
+2. **Refined Test Cases**: We made the test cases more specific, targeting the key functionality to catch more mutants.
+3. **Removed Redundant Tests**: We streamlined the test suite by eliminating duplicate tests, which improved efficiency and reduced the chances of equivalent mutants.
+4. **Focused on Critical Areas**: We concentrated on testing more complex areas of the code, where the risk of defects was higher, which improved the mutation score.
+
 # Why do we need mutation testing? Advantages and disadvantages of mutation testing
+
+In our project, mutation testing was crucial for evaluating the effectiveness of our test suite by introducing small changes (mutants) in the RangeTest and DataUtilitiesTest code. It ensured that the test suite could accurately detect faults and was functioning as expected.
+
+**Advantages:**
+
+1. **Quality Check**: It provides insight into how well the test suite identifies faults.
+2. **Improved Code Quality**: It helps us refine our tests, ensuring better code quality.
+3. **Identifies Weak Tests**: It exposes flaws in test cases, ensuring reliability.
+4. **Detects Uncovered Code**: It highlights code areas that need more tests.
+
+**Disadvantages:**
+
+1. **Time-Consuming**: Running tests on all mutants can slow down the testing process, especially with large codebases.
+2. **Equivalent Mutants**: Mutants that do not affect behavior can distort results.
+3. **Limited Coverage**: Mutation testing doesn’t guarantee full code coverage.
+4. **Complex Results**: Analyzing mutation testing results can be challenging.
+
+Overall, mutation testing is a valuable tool for improving software quality, but it requires careful handling to address its challenges.
+
 
 # Explain your SELENUIM test case design process
 
