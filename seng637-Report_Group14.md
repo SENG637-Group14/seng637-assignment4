@@ -19,20 +19,7 @@ You can find the website tests in the root folder (.side files), and the updated
 
 # Analysis of 10 Mutants of the Range class 
 
-## Mutation Analysis of `Range` Class
-
-This analysis aims to evaluate the effectiveness of the test suite by identifying potential mutants (small changes) in the original code and determining whether the existing tests can detect and "kill" them.
-
-**Summary of Initial Test Coverage (Based on inspection; actual coverage may vary):**
-
-*   The test suite primarily focuses on the constructor, `getCentralValue()`, and `getLowerBound()` methods.
-*   Several methods, such as `getUpperBound()`, `getLength()`, `contains()`, `intersects()`, `constrain()`, `combine()`, `expandToInclude()`, `expand()`, `shift()`, `scale()`, and `isNaNRange()`, lack dedicated test cases.
-
-
-
-## **Mutant Analysis (10 Mutants with Explanations and Code Snippets)**
-
-### 1. **Mutation in `expand()` Method (Survived)**  
+**1. Mutation in `expand()` Method (Survived)**  
 In the `expand(Range range, double lowerMargin, double upperMargin)` method, the mutant replaced the averaging operation:
 
 ```java
@@ -47,7 +34,7 @@ This mutation ignores `upper` when recalculating the midpoint, affecting cases w
 
 ---
 
-### 2. **Mutation in `scale()` Method (Survived)**  
+**2. Mutation in `scale()` Method (Survived)**  
 In the `scale(Range range, double factor)` method, the mutant modified the boundary condition:
 
 ```java
@@ -66,7 +53,7 @@ The mutation altered the strictness of the condition, potentially allowing zero 
 
 ---
 
-### 3. **Mutation in `equals()` Method (Survived)**  
+**3. Mutation in `equals()` Method (Survived)**  
 The mutation in `equals(Object obj)` removed the logical negation of the `instanceof` check, allowing incorrect types to pass the comparison:
 
 ```java
@@ -85,7 +72,7 @@ This mutant survived, suggesting that the test suite does not verify that compar
 
 ---
 
-### 4. **Mutation in `isNaNRange()` Method (Survived)**  
+**4. Mutation in `isNaNRange()` Method (Survived)**  
 The mutant incremented the `lower` value before checking if both bounds are NaN:
 
 ```java
@@ -100,7 +87,7 @@ This mutation alters the correctness of the NaN check. Its survival indicates th
 
 ---
 
-### 5. **Mutation in `getCentralValue()` Method (Survived)**  
+**5. Mutation in `getCentralValue()` Method (Survived)**  
 In `getCentralValue()`, the mutant decremented `lower` before calculating the midpoint:
 
 ```java
@@ -115,7 +102,7 @@ The mutation changes the midpoint, potentially leading to incorrect results. Sin
 
 ---
 
-### 6. **Mutation in `getUpperBound()` Method (Killed)**  
+**6. Mutation in `getUpperBound()` Method (Killed)**  
 The mutation decremented `upper` before returning its value:
 
 ```java
@@ -130,7 +117,7 @@ The mutation was killed, indicating that the test suite effectively verifies the
 
 ---
 
-### 7. **Mutation in `getCentralValue()` Method (Killed)**  
+**7. Mutation in `getCentralValue()` Method (Killed)**  
 A mutant negated `upper` before calculating the midpoint:
 
 ```java
@@ -145,7 +132,7 @@ The test suite successfully killed this mutant by detecting changes in the midpo
 
 ---
 
-### 8. **Mutation in `intersects()` Method (Survived)**  
+**8. Mutation in `intersects()` Method (Survived)**  
 In `intersects(double b0, double b1)`, the mutant altered the boundary condition:
 
 ```java
@@ -160,7 +147,7 @@ This mutation changes the logic for determining intersections, potentially causi
 
 ---
 
-### 9. **Mutation in `shiftWithNoZeroCrossing()` Method (Survived)**  
+**9. Mutation in `shiftWithNoZeroCrossing()` Method (Survived)**  
 A mutant in `shiftWithNoZeroCrossing(double value, double delta)` altered the condition that prevents zero-crossing:
 
 ```java
@@ -175,7 +162,7 @@ The mutant changes the boundary condition, potentially allowing unintended zero-
 
 ---
 
-### 10. **Mutation in `shiftWithNoZeroCrossing()` Method (Survived)**  
+**10. Mutation in `shiftWithNoZeroCrossing()` Method (Survived)**  
 In the same method, another mutant replaced the conditional check with a hardcoded `false`, effectively bypassing the logic:
 
 ```java
@@ -504,8 +491,6 @@ The new test suite significantly enhances the reliability and effectiveness of t
 
 # Analysis drawn on the effectiveness of each of the test classes
 
-### Analysis of the Effectiveness of Each Test Class
-
 In this analysis, we evaluate how well each test class works by examining its coverage, strength, and ability to detect faults, including how effectively it handles edge cases. Here's what we found:
 
 **DatautilitiesTest**
@@ -540,9 +525,7 @@ Both test classes are effective, but there is definite room for improvement. By 
 
 # A discussion on the effect of equivalent mutants on mutation score accuracy
 
-### Effect of Equivalent Mutants on Mutation Score Accuracy
-
-In our exercises, we introduced mutants (small changes) in the code to check how well **DatautilitiesTest** and **RangeTest** identified faults. The mutation score indicated how many mutants were killed by the tests, reflecting the effectiveness of our test suites. However, **equivalent mutants** impacted the score because they didn’t change the program’s behavior, despite being syntactically different. These mutants weren't killed by the tests since they acted the same way as the original code.
+In our testing exercise, we introduced mutants (small changes) in the code to check how well **DatautilitiesTest** and **RangeTest** identified faults. The mutation score indicated how many mutants were killed by the tests, reflecting the effectiveness of our test suites. However, **equivalent mutants** impacted the score because they didn’t change the program’s behavior, despite being syntactically different. These mutants weren't killed by the tests since they acted the same way as the original code.
 
 The presence of equivalent mutants in the tests lowered the accuracy of the mutation score. They increased the number of "live" mutants, making it seem like the test suites weren’t as effective as they really were. This gave an inaccurate view of the test suites’ quality.
 
