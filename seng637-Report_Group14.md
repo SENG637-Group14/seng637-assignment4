@@ -19,6 +19,176 @@ You can find the website tests in the root folder (.side files), and the updated
 
 # Analysis of 10 Mutants of the Range class 
 
+## Mutation Analysis of `Range` Class
+
+This analysis aims to evaluate the effectiveness of the test suite by identifying potential mutants (small changes) in the original code and determining whether the existing tests can detect and "kill" them.
+
+**Summary of Initial Test Coverage (Based on inspection; actual coverage may vary):**
+
+*   The test suite primarily focuses on the constructor, `getCentralValue()`, and `getLowerBound()` methods.
+*   Several methods, such as `getUpperBound()`, `getLength()`, `contains()`, `intersects()`, `constrain()`, `combine()`, `expandToInclude()`, `expand()`, `shift()`, `scale()`, and `isNaNRange()`, lack dedicated test cases.
+
+
+
+## **Mutant Analysis (10 Mutants with Explanations and Code Snippets)**
+
+### 1. **Mutation in `expand()` Method (Survived)**  
+In the `expand(Range range, double lowerMargin, double upperMargin)` method, the mutant replaced the averaging operation:
+
+```java
+// Original
+lower = lower / 2.0 + upper / 2.0;
+
+// Mutated
+lower = lower;
+```
+
+This mutation ignores `upper` when recalculating the midpoint, affecting cases where `lower > upper` after expansion. Since the mutant survived, it suggests that the test suite does not explicitly verify scenarios where `lower` and `upper` require recalculation after inversion. Adding tests to cover such conditions would kill this mutant.
+
+---
+
+### 2. **Mutation in `scale()` Method (Survived)**  
+In the `scale(Range range, double factor)` method, the mutant modified the boundary condition:
+
+```java
+// Original
+if (factor < 0) {
+    throw new IllegalArgumentException("Factor must be non-negative.");
+}
+
+// Mutated
+if (factor <= 0) {
+    throw new IllegalArgumentException("Factor must be non-negative.");
+}
+```
+
+The mutation altered the strictness of the condition, potentially allowing zero as a valid `factor`. The survival of this mutant indicates that the test suite lacks tests to verify boundary conditions for negative and zero scaling factors.
+
+---
+
+### 3. **Mutation in `equals()` Method (Survived)**  
+The mutation in `equals(Object obj)` removed the logical negation of the `instanceof` check, allowing incorrect types to pass the comparison:
+
+```java
+// Original
+if (!(obj instanceof Range)) {
+    return false;
+}
+
+// Mutated
+if ((obj instanceof Range)) {
+    return false;
+}
+```
+
+This mutant survived, suggesting that the test suite does not verify that comparisons with non-`Range` objects correctly return `false`. Adding tests to compare `Range` with incompatible types would kill this mutant.
+
+---
+
+### 4. **Mutation in `isNaNRange()` Method (Survived)**  
+The mutant incremented the `lower` value before checking if both bounds are NaN:
+
+```java
+// Original
+return Double.isNaN(this.lower) && Double.isNaN(this.upper);
+
+// Mutated
+return Double.isNaN(this.lower++) && Double.isNaN(this.upper);
+```
+
+This mutation alters the correctness of the NaN check. Its survival indicates that the test suite does not sufficiently verify that `isNaNRange()` correctly identifies NaN ranges. Additional tests should cover cases where one or both bounds are modified before the NaN check.
+
+---
+
+### 5. **Mutation in `getCentralValue()` Method (Survived)**  
+In `getCentralValue()`, the mutant decremented `lower` before calculating the midpoint:
+
+```java
+// Original
+return this.lower / 2.0 + this.upper / 2.0;
+
+// Mutated
+return this.lower-- / 2.0 + this.upper / 2.0;
+```
+
+The mutation changes the midpoint, potentially leading to incorrect results. Since this mutant survived, the test suite may not include boundary tests for verifying the midpoint calculation under variations of `lower` and `upper` values.
+
+---
+
+### 6. **Mutation in `getUpperBound()` Method (Killed)**  
+The mutation decremented `upper` before returning its value:
+
+```java
+// Original
+return this.upper;
+
+// Mutated
+return this.upper--;
+```
+
+The mutation was killed, indicating that the test suite effectively verifies the correctness of the `getUpperBound()` method. This suggests that boundary tests for the upper bound are well-covered.
+
+---
+
+### 7. **Mutation in `getCentralValue()` Method (Killed)**  
+A mutant negated `upper` before calculating the midpoint:
+
+```java
+// Original
+return this.lower / 2.0 + this.upper / 2.0;
+
+// Mutated
+return this.lower / 2.0 + (-this.upper) / 2.0;
+```
+
+The test suite successfully killed this mutant by detecting changes in the midpoint calculation when the upper bound was negated. Tests validating the midpoint calculation handled this mutant effectively.
+
+---
+
+### 8. **Mutation in `intersects()` Method (Survived)**  
+In `intersects(double b0, double b1)`, the mutant altered the boundary condition:
+
+```java
+// Original
+if (b0 <= this.lower)
+
+// Mutated
+if (b0 >= this.lower)
+```
+
+This mutation changes the logic for determining intersections, potentially causing the method to misidentify intersection conditions. Since the mutant survived, additional boundary tests for intersection logic should be added.
+
+---
+
+### 9. **Mutation in `shiftWithNoZeroCrossing()` Method (Survived)**  
+A mutant in `shiftWithNoZeroCrossing(double value, double delta)` altered the condition that prevents zero-crossing:
+
+```java
+// Original
+if (value > 0.0)
+
+// Mutated
+if (value >= 0.0)
+```
+
+The mutant changes the boundary condition, potentially allowing unintended zero-crossing behavior. Its survival suggests that tests verifying zero-crossing prevention for positive values should be included.
+
+---
+
+### 10. **Mutation in `shiftWithNoZeroCrossing()` Method (Survived)**  
+In the same method, another mutant replaced the conditional check with a hardcoded `false`, effectively bypassing the logic:
+
+```java
+// Original
+else if (value < 0.0)
+
+// Mutated
+else if (false)
+```
+
+This mutation disables the handling of negative values during shifts, potentially leading to unintended zero-crossing. Since it survived, test cases for verifying shifts with negative values should be added.
+
+
 # Report all the statistics and the mutation score for each test class
 
 By introducing small code changes (mutants), the test suite was evaluated to see how many mutants were killed (caught by tests) and how many survived (escaped detection).
