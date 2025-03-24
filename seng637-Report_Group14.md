@@ -11,7 +11,7 @@
 | Taiwo Oyewole  |     |
 
 # Introduction
-Building upon the foundations established in our previous labs, this report details our exploration of advanced testing techniques, specifically mutation testing and web application testing. As a continuation of the previous labs, in this lab, we're doing two types of software testing. First, we're using Pitest to see how good our old tests are at finding bugs in the `Range` and `DataUtilities` code. We'll try to make our tests better so they catch more bugs (increase the "mutation score").
+Building upon the foundations established in our previous labs, this report details our exploration of advanced testing techniques, specifically mutation testing and web application testing. As a continuation of the last lab, in this lab, we're doing two types of software testing. First, we're using Pitest to see how good our old tests are at finding bugs in the `Range` and `DataUtilities` code. We'll try to make our tests better so they catch more bugs (increase the "mutation score").
 
 Second, we're using Selenium to test "Air Canada" website. We'll create tests to check if different parts of the website work correctly.
 
@@ -190,6 +190,7 @@ By introducing small code changes (mutants), the test suite was evaluated to see
 <img src="media/12-DU_TS_PITMutation.png" alt="media/12-DU_TS_PITMutation.png" >
 
 **PIT Mutations**
+
 <img src="media/1-DUSummary.png" alt="media/1-DUSummary.png" >
 
 
@@ -301,8 +302,13 @@ Removal of method calls (getItemCount, getValue, etc.).
    We also improved some of the tests we had before, making sure all conditions (like checking for zero or negative values) were fully covered. This helped fill in gaps where the tests weren’t thorough enough.
 
 ---
-
 **Improvements and Results:**
+
+**Increased Test Cases**  
+   - The test suite was expanded from **22** to over **46** test cases. Targeted new test cases were designed based on the surviving and uncovered mutations.
+
+<img src="media/16-DUNew_TS.png" alt="media/16-DUNew_TS.png" >
+
 
 **1. Line Coverage:**
    Line coverage improved from **39%** to **66%**. This means **14 more lines of code** are now covered by tests. These improvements came from:
@@ -432,9 +438,8 @@ To improve the test coverage and address these concerns, several strategic steps
 
 **Results**
 1. **Increased Test Cases**  
-   - The test suite was expanded from **58** to over **148** test cases.  
-   - Targeted new test cases were designed based on the surviving and uncovered mutations.
-   - 
+   - The test suite was expanded from **58** to over **148** test cases. Targeted new test cases were designed based on the surviving and uncovered mutations.
+   
 <img src="media/15-RangeNew_TS.png" alt="media/15-RangeNew_TS.png" >
 
 
@@ -485,9 +490,7 @@ Test strength measures how effectively the tests kill mutants. With a test stren
 
 ---
 
-
 The new test suite significantly enhances the reliability and effectiveness of the `Range` class.
-```
 
 # Analysis drawn on the effectiveness of each of the test classes
 
@@ -555,7 +558,33 @@ We handled the equivalent mutants to ensure the mutation score was accurate. In 
 
 # A discussion of what could have been done to improve the mutation score of the test suites
 
+To improve the mutation score of **RangeTest** and **DataUtilitiesTest**, we implemented the following actions below. These actions successfully improved the mutation score for both **RangeTest** and **DataUtilitiesTest**, ensuring a more accurate reflection of the test suite's effectiveness.
+
+1. **Increased Test Coverage**: We added more edge cases to the tests, ensuring that the mutants were effectively killed across various scenarios.
+2. **Refined Test Cases**: We made the test cases more specific, targeting the key functionality to catch more mutants.
+3. **Removed Redundant Tests**: We streamlined the test suite by eliminating duplicate tests, which improved efficiency and reduced the chances of equivalent mutants.
+4. **Focused on Critical Areas**: We concentrated on testing more complex areas of the code, where the risk of defects was higher, which improved the mutation score.
+
 # Why do we need mutation testing? Advantages and disadvantages of mutation testing
+
+In our project, mutation testing was crucial for evaluating the effectiveness of our test suite by introducing small changes (mutants) in the RangeTest and DataUtilitiesTest code. It ensured that the test suite could accurately detect faults and was functioning as expected.
+
+**Advantages:**
+
+1. **Quality Check**: It provides insight into how well the test suite identifies faults.
+2. **Improved Code Quality**: It helps us refine our tests, ensuring better code quality.
+3. **Identifies Weak Tests**: It exposes flaws in test cases, ensuring reliability.
+4. **Detects Uncovered Code**: It highlights code areas that need more tests.
+
+**Disadvantages:**
+
+1. **Time-Consuming**: Running tests on all mutants can slow down the testing process, especially with large codebases.
+2. **Equivalent Mutants**: Mutants that do not affect behavior can distort results.
+3. **Limited Coverage**: Mutation testing doesn’t guarantee full code coverage.
+4. **Complex Results**: Analyzing mutation testing results can be challenging.
+
+Overall, mutation testing is a valuable tool for improving software quality, but it requires careful handling to address its challenges.
+
 
 # Explain your SELENUIM test case design process
 
@@ -565,6 +594,39 @@ We handled the equivalent mutants to ensure the mutation score was accurate. In 
 
 # How the team work/effort was divided and managed
 
+The team worked collaboratively throughout the entire project, with each member contributing to different aspects. The project was divided and executed as follows:
+
+**Teamwork and Responsibilities**
+
+| **Task**                           | **Responsibility** |
+|-------------------------------------|--------------------|
+| **Requirement Analysis**           | All team members reviewed the **RangeTest** and **DataUtilitiesTest** code to identify key areas for mutation and GUI testing. We defined testing objectives using **PITTEST** and **Selenium**. |
+| **Test-Case Design**               | Each member designed test cases for specific methods, focusing on statement, branch, and condition coverage, and ensuring mutation testing goals were met. |
+| **Test Execution & Coverage Analysis** | The team ran tests using **PITTEST** to assess mutation coverage, analyzed the results, and refined the tests to maximize mutation detection. |
+| **Code Review & Test Consolidation** | The team reviewed test cases and mutation results, removed ineffective tests, and consolidated the most effective ones for optimal coverage. |
+
+The final report was a collaborative effort, with each team member contributing to different sections.
+
+**Communication & Collaboration**: Regular meetings (both in-person and virtual) and a shared online document kept the team updated on progress, and allowed us to address challenges together. This approach ensured effective communication and a smooth workflow throughout the project.
+
 # Difficulties encountered, challenges overcome, and lessons learned
 
+### Difficulties Encountered, Challenges Overcome, and Lessons Learned
+
+During the project, we faced a few challenges but overcame them with teamwork and problem-solving.
+
+1. **Improving Mutation Coverage**: At first, our mutation coverage wasn’t improving much. The test cases didn’t seem to make a difference. After reviewing the coverage report line by line, we found areas where our tests were lacking. By fixing these gaps and focusing on important tests, we were able to improve our mutation coverage.
+
+2. **Selenium Setup Issues**: We had trouble setting up **Selenium** with **Chrome**, as it wasn’t working correctly. After trying several solutions, we switched to **Mozilla Firefox**, which worked well. This change required some updates to our code, but it allowed us to move forward with the tests.
+
+3. **Handling Equivalent Mutants**: During mutation testing with **PITTEST**, we encountered equivalent mutants that didn’t change the program’s behavior. This made the mutation score look worse than it should have. By adjusting our tests to cover more edge cases, we managed to improve the accuracy of the mutation score.
+
+**Lessons Learned**:  
+- Thoroughly analyzing coverage reports line by line can help identify gaps and refine test cases effectively.  
+- Flexibility and adaptability are key, especially when dealing with tool-related issues (like switching from **Chrome** to **Mozilla Firefox** in Selenium).  
+- Mutation testing results can be misleading if equivalent mutants are not properly handled. Fine-tuning the tests to address such cases is crucial.  
+
 # Comments/feedback on the assignment itself
+
+- The instructions and guidelines for this assignment were clear and well-structured, making it easier to understand and implement the test cases effectively.
+- The lab exercise provided valuable experience in mutation testing, using PITEST FOR coverage analysis, and executing structured GUI test cases using Selenium.

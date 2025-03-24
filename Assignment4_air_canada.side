@@ -5,7 +5,11 @@
   "url": "https://www.aircanada.com/home/ca/en/aco/flights",
   "tests": [{
     "id": "6ca296a4-9ad6-4899-b551-f724dbda07b5",
+<<<<<<< HEAD
     "name": "Test Case 6: Invalid Sign In",
+=======
+    "name": "Invalid Sign In",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
     "commands": [{
       "id": "90dd2b7a-1bd4-47a9-ac19-b4116e57218c",
       "comment": "",
@@ -293,7 +297,11 @@
     }]
   }, {
     "id": "f14870cb-1881-452e-bdc3-31603957332b",
+<<<<<<< HEAD
     "name": "Test Case 7: Trip Invalid Booking Reference",
+=======
+    "name": "Trip Invalid Booking Reference",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
     "commands": [{
       "id": "22b15ea5-59ef-44ad-968c-7cfba877a29c",
       "comment": "",
@@ -467,7 +475,11 @@
     }]
   }, {
     "id": "8728281b-a712-40e8-b887-b66eeacd151c",
+<<<<<<< HEAD
     "name": "Test Case 4: Forgot Password",
+=======
+    "name": "Forgot Password",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
     "commands": [{
       "id": "375095ac-8aaf-4568-8cd5-66a6bd3c918e",
       "comment": "",
@@ -611,7 +623,11 @@
     }]
   }, {
     "id": "cf7aa867-2b0f-46e0-b2a0-58a63beddd88",
+<<<<<<< HEAD
     "name": "Test Case 8: Test I18n (internationalization)",
+=======
+    "name": "Test I18n (internationalization)",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
     "commands": [{
       "id": "148c2b09-f467-40a5-bc80-2d94d86d7dc5",
       "comment": "",
@@ -696,6 +712,7 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "9a28006c-b523-49ca-9187-1cee9390abfc",
       "comment": "",
       "command": "waitForElementVisible",
@@ -710,6 +727,8 @@
       "targets": [],
       "value": "30000"
     }, {
+=======
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "id": "fa9bf7a6-6a5a-4422-a270-80b03f4a506c",
       "comment": "",
       "command": "assertText",
@@ -815,7 +834,11 @@
     }]
   }, {
     "id": "d0ac4c10-b4e4-407d-ada7-5436744676ca",
+<<<<<<< HEAD
     "name": "Test Case 3: Flight Status Check",
+=======
+    "name": "Flight Status Check",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
     "commands": [{
       "id": "9b2118b6-97e8-4c97-be63-108e771eed61",
       "comment": "",
@@ -855,6 +878,22 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
+=======
+      "id": "3c62a4c1-55a9-48d8-8fdb-71b69e10fc84",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=abcRadioButtonElement64",
+      "targets": [
+        ["id=abcRadioButtonElement64", "id"],
+        ["css=#abcRadioButtonElement64", "css:finder"],
+        ["xpath=//input[@id='abcRadioButtonElement64']", "xpath:attributes"],
+        ["xpath=//div[@id='main-search-flight-container']/div/div/abc-radio-group/div/div/abc-radio-button[2]/div/input", "xpath:idRelative"],
+        ["xpath=//abc-radio-button[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "id": "a5858514-5063-4f9f-bc13-e55bd774b3d0",
       "comment": "",
       "command": "mouseOut",
@@ -919,6 +958,7 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "7d38af95-26c3-4ab1-9491-3ea382ef436c",
       "comment": "",
       "command": "waitForElementEditable",
@@ -930,6 +970,12 @@
       "comment": "",
       "command": "type",
       "target": "id=abcFormFieldElement73",
+=======
+      "id": "5147ee12-0377-4da7-9982-01547051de59",
+      "comment": "",
+      "command": "type",
+      "target": "id=abcFormFieldElement70",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "targets": [
         ["id=abcFormFieldElement70", "id"],
         ["name=abcFormFieldElement70", "name"],
@@ -938,7 +984,11 @@
         ["xpath=//div[@id='main-search-flight-container']/div/div[2]/form/fieldset/div/div/abc-typeahead/div/abc-input/abc-form-element-container/div/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div/abc-input/abc-form-element-container/div/div/div/div/div/input", "xpath:position"]
       ],
+<<<<<<< HEAD
       "value": "Vancouver"
+=======
+      "value": "vanc"
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
     }, {
       "id": "16f79d09-2dc7-48e0-ad39-2478b5cbdf15",
       "comment": "",
@@ -965,6 +1015,7 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "63a18842-5a91-4d57-98c8-a0d5c676e92d",
       "comment": "",
       "command": "waitForElementEditable",
@@ -976,6 +1027,12 @@
       "comment": "",
       "command": "type",
       "target": "id=abcFormFieldElement74",
+=======
+      "id": "79ebbc97-c2b1-436c-81bc-cf582f126e17",
+      "comment": "",
+      "command": "type",
+      "target": "id=abcFormFieldElement71",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "targets": [
         ["id=abcFormFieldElement71", "id"],
         ["name=abcFormFieldElement71", "name"],
@@ -984,7 +1041,11 @@
         ["xpath=//div[@id='main-search-flight-container']/div/div[2]/form/fieldset/div/div[2]/abc-typeahead/div/abc-input/abc-form-element-container/div/div/div/div/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/abc-typeahead/div/abc-input/abc-form-element-container/div/div/div/div/div/input", "xpath:position"]
       ],
+<<<<<<< HEAD
       "value": "Calgary"
+=======
+      "value": "Calga"
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
     }, {
       "id": "d6b125f8-ebea-45e8-92fc-d587cf056ec0",
       "comment": "",
@@ -1055,7 +1116,11 @@
     }]
   }, {
     "id": "a0dadb19-e64d-4321-b8b5-5294e64c5be9",
+<<<<<<< HEAD
     "name": "Test Case 5: Invalid Search",
+=======
+    "name": "Invalid Search",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
     "commands": [{
       "id": "b439eb58-72ab-4bb5-b4bb-019a9327a49d",
       "comment": "",
@@ -1172,7 +1237,11 @@
     }]
   }, {
     "id": "b7beb828-72f9-4333-b5ac-145dbbed02a2",
+<<<<<<< HEAD
     "name": "Test Case 2: Check Deals for Trip",
+=======
+    "name": "Check Deals for Trip",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
     "commands": [{
       "id": "985ccd62-172a-45b7-b114-b3a7a3bd15f8",
       "comment": "",
@@ -1705,31 +1774,50 @@
       "value": "Fares displayed are per person, each way, based on the purchase of a round-trip ticket, and include all taxes, fees and charges. Fare features listed apply to flights operated by Air Canada, Air Canada Express and Air Canada Rouge. Policies and rules may differ for flights operated by other carriers."
     }]
   }, {
+<<<<<<< HEAD
     "id": "b1e07ce7-62f1-4e93-ac36-12fb69dcfa9a",
     "name": "Test Case 1: Car rental",
     "commands": [{
       "id": "a012588d-00a9-4185-912c-f3e332bfa96d",
+=======
+    "id": "2467e55b-c5df-4489-9ce7-cf53a116d1ae",
+    "name": "Car rental ",
+    "commands": [{
+      "id": "0a32348a-97c3-4e73-b3c3-fa45e21c8dfc",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "open",
       "target": "https://www.aircanada.com/home/ca/en/aco/flights",
       "targets": [],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "b4dd5df3-5709-4ac0-b002-6b97eb2e7bd8",
+=======
+      "id": "d59ad9a5-dae1-487f-aed6-e6f6758fcd76",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "setWindowSize",
       "target": "1728x1080",
       "targets": [],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "3b6e7867-468a-4cdd-9453-ba86050205d2",
+=======
+      "id": "b95587a6-1b1f-4846-b74b-5fad84eb1066",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "runScript",
       "target": "window.scrollTo(0,0)",
       "targets": [],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "bae387d4-8df9-42db-87a9-10880fca6734",
+=======
+      "id": "fb2f3469-bea3-4ee2-8108-b93ae12c2c61",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "mouseOver",
       "target": "css=#nav-button-31 .name",
@@ -1740,7 +1828,11 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "f878cc5f-06ff-4692-8ac0-1438814eb73b",
+=======
+      "id": "b7fac2c1-c24a-4e36-82d0-5618e5e6ccee",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "click",
       "target": "css=#nav-button-31 .name",
@@ -1751,7 +1843,11 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "a6463f55-cad8-40c8-82ab-cb0f8084a239",
+=======
+      "id": "333ba5d4-ff94-4bc4-b73a-f928049ed081",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "mouseOut",
       "target": "css=#nav-button-31 .name",
@@ -1762,7 +1858,11 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "76782787-a685-4750-832b-da188a2f1989",
+=======
+      "id": "687adf97-fd02-4486-952c-3626900022e2",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "mouseOver",
       "target": "id=nav-button-31",
@@ -1778,7 +1878,11 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "4d8a65e6-a398-4d73-ab41-2c281aef2e9f",
+=======
+      "id": "5364dcfa-1407-4f2d-ab2a-d23adb2e2f10",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "click",
       "target": "id=carsTab_pickupLocation",
@@ -1792,7 +1896,11 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "542c6bdc-bd64-46a2-91a9-5068c2e1f4ab",
+=======
+      "id": "dd42eccd-e5c5-466c-b3d1-3a6551cdaec5",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "type",
       "target": "id=carsTab_pickupLocation",
@@ -1806,7 +1914,11 @@
       ],
       "value": "Calga"
     }, {
+<<<<<<< HEAD
       "id": "cf80d8db-faca-4446-bc0f-4ab203a73447",
+=======
+      "id": "9dd48f8b-0848-4936-bb7a-78a14881ccb2",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "click",
       "target": "css=abc-ripple:nth-child(3) > .abc-ripple-wrapper",
@@ -1817,7 +1929,11 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "113d0479-0b9d-449a-a40f-a2fdb2587423",
+=======
+      "id": "617b2113-38e0-44d0-ba0f-d1272f1e84af",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "click",
       "target": "id=carsTab_returnLocation",
@@ -1831,7 +1947,11 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "d0da4a03-ca5a-4179-bad2-08d6a2153516",
+=======
+      "id": "34b24602-b440-4077-8cc6-9216c17d89b9",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "click",
       "target": "css=abc-ripple:nth-child(4) > .abc-ripple-wrapper",
@@ -1842,7 +1962,11 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "8b756eb2-c654-4443-ac0d-23c2356dbe37",
+=======
+      "id": "dad33ef3-5def-42d5-ad3e-571f8e1f54d9",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "click",
       "target": "id=carsTab_pickUpDate",
@@ -1856,7 +1980,11 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "4b6ebca3-f356-4414-81bd-6f4065ebced5",
+=======
+      "id": "50304089-8ad8-49be-8ffc-e1e760a2bb91",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "click",
       "target": "id=carsTab_pickUpDate-date-2025-04-01",
@@ -1869,7 +1997,11 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "17d9434f-5406-4fe6-a9d3-3c4633cae06a",
+=======
+      "id": "1cf8710b-a50d-452e-84c4-c34522ec9241",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "click",
       "target": "id=carsTab_returnDate",
@@ -1883,7 +2015,11 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "1fab6ee1-7f42-48e3-8ffd-38823340583b",
+=======
+      "id": "69c29bb4-7c94-4f20-b53c-b1a2a1c45d6a",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "click",
       "target": "id=carsTab_returnDate-date-2025-04-09",
@@ -1896,7 +2032,11 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "26653604-9c82-42fb-b1e9-eeccb98c774d",
+=======
+      "id": "6abb9f95-1ce8-4602-b740-0af527cddb7b",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "click",
       "target": "css=#abcAbcComboBoxElement78 .abc-form-element-main",
@@ -1907,7 +2047,11 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "24a5459e-63ea-4766-941a-689693f2b71f",
+=======
+      "id": "33dc1144-88e1-42fc-b4f1-97a3b56488f6",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "click",
       "target": "id=abcAbcComboBoxElement78-option-30",
@@ -1921,7 +2065,11 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "59519355-7546-4e44-b9bf-2286a2bb3261",
+=======
+      "id": "46e2c16b-4c71-4130-b244-d8813ea232f5",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "assertText",
       "target": "css=.ac-page-title",
@@ -1933,7 +2081,11 @@
       ],
       "value": "Book your car rental"
     }, {
+<<<<<<< HEAD
       "id": "d6881221-b9cf-4bf9-b7d0-e90786da1ead",
+=======
+      "id": "5abcc673-97bb-426b-8bd0-2d6b5257e761",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "click",
       "target": "css=#abcButtonElement86 .abc-ripple-wrapper",
@@ -1944,7 +2096,21 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "b2f6cf18-48dd-48f2-9836-9e5898313156",
+=======
+      "id": "cb5c0d31-328e-426c-bf2f-25b8cbffeffe",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.name",
+      "targets": [
+        ["css=.name", "css:finder"],
+        ["xpath=//div[2]/section/div/div/div", "xpath:position"]
+      ],
+      "value": "Calgary Intl Airport"
+    }, {
+      "id": "01968631-16f7-4155-81c6-c9de6f39c81b",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "click",
       "target": "css=.shop-details-change-container > .shop-details-change .ng-binding",
@@ -1954,7 +2120,11 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "aeb0ac8f-3b31-450f-a5ad-7bc578adbf21",
+=======
+      "id": "dda0c84b-3218-48e1-bdfe-c137f0e960a2",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "click",
       "target": "name=return_time",
@@ -1967,14 +2137,22 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "e14cfb44-9e17-4d9d-a408-ee1a704cde66",
+=======
+      "id": "628259b6-9cdb-4874-bcea-0c6acdcddd46",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "select",
       "target": "name=return_time",
       "targets": [],
       "value": "label=7:30 PM"
     }, {
+<<<<<<< HEAD
       "id": "634e3148-ee6b-4a0e-9538-3b130a2b4a7b",
+=======
+      "id": "0438346f-8059-45af-910b-247fd42b85e8",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "click",
       "target": "css=.u-pull-right .button-primary",
@@ -1984,7 +2162,11 @@
       ],
       "value": ""
     }, {
+<<<<<<< HEAD
       "id": "b4da040b-c983-47b7-b8c2-690e9b8885a2",
+=======
+      "id": "c7b67e23-b9ad-482a-b3c8-a04fd4a21830",
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
       "comment": "",
       "command": "assertText",
       "target": "css=.name",
@@ -1997,11 +2179,19 @@
   }],
   "suites": [{
     "id": "3d51ef6a-f1bc-46d2-a006-11dc71a7d824",
+<<<<<<< HEAD
     "name": "Air Canada GUI Test Suite",
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
     "tests": ["b1e07ce7-62f1-4e93-ac36-12fb69dcfa9a", "b7beb828-72f9-4333-b5ac-145dbbed02a2", "d0ac4c10-b4e4-407d-ada7-5436744676ca", "8728281b-a712-40e8-b887-b66eeacd151c", "a0dadb19-e64d-4321-b8b5-5294e64c5be9", "6ca296a4-9ad6-4899-b551-f724dbda07b5", "f14870cb-1881-452e-bdc3-31603957332b", "cf7aa867-2b0f-46e0-b2a0-58a63beddd88"]
+=======
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+>>>>>>> f9dcb52cdfeb8a60889d9374d66350cae42ded9e
   }],
   "urls": ["https://www.aircanada.com/home/ca/en/aco/flights"],
   "plugins": []
