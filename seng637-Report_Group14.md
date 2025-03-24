@@ -10,6 +10,41 @@
 | Remi Oyediji   |     |
 | Taiwo Oyewole  |     |
 
+- [Introduction](#introduction)
+- [Analysis of 10 Mutants of the Range class](#analysis-of-10-mutants-of-the-range-class)
+- [Report all the statistics and the mutation score for each test class](#report-all-the-statistics-and-the-mutation-score-for-each-test-class)
+  - [For DataUtitlities Test](#for-datautitlities-test)
+    - [Mutation Coverage Calculation:](#mutation-coverage-calculation)
+  - [Improved DataUtilities Test Suite](#improved-datautilities-test-suite)
+  - [How We Improved the Coverage:](#how-we-improved-the-coverage)
+      - [**Testing Null Values:**](#testing-null-values)
+      - [**Testing Boundary Conditions:**](#testing-boundary-conditions)
+      - [**Handling Invalid Column Indexes:**](#handling-invalid-column-indexes)
+      - [**Testing Mutated Code:**](#testing-mutated-code)
+      - [**Testing Different Column Counts:**](#testing-different-column-counts)
+  - [For Range Test](#for-range-test)
+  - [**Test Coverage Analysis for Range.java**](#test-coverage-analysis-for-rangejava)
+  - [Improved Test Suite Report for `Range` Class](#improved-test-suite-report-for-range-class)
+    - [Approach to Improving Coverage:](#approach-to-improving-coverage)
+      - [1. **Line Coverage**](#1-line-coverage)
+      - [2. **Mutation Coverage**](#2-mutation-coverage)
+      - [3. **Test Strength**](#3-test-strength)
+    - [What Was Improved:](#what-was-improved)
+- [Analysis drawn on the effectiveness of each of the test classes](#analysis-drawn-on-the-effectiveness-of-each-of-the-test-classes)
+    - [Effectiveness Summary](#effectiveness-summary)
+- [A discussion on the effect of equivalent mutants on mutation score accuracy](#a-discussion-on-the-effect-of-equivalent-mutants-on-mutation-score-accuracy)
+- [A discussion of what could have been done to improve the mutation score of the test suites](#a-discussion-of-what-could-have-been-done-to-improve-the-mutation-score-of-the-test-suites)
+- [Why do we need mutation testing? Advantages and disadvantages of mutation testing](#why-do-we-need-mutation-testing-advantages-and-disadvantages-of-mutation-testing)
+- [Explain your SELENUIM test case design process](#explain-your-selenuim-test-case-design-process)
+    - [**Error Handling and Retesting**](#error-handling-and-retesting)
+- [Explain the use of assertions and checkpoints](#explain-the-use-of-assertions-and-checkpoints)
+- [how did you test each functionaity with different test data](#how-did-you-test-each-functionaity-with-different-test-data)
+- [How the teamwork/effort was divided and managed](#how-the-teamworkeffort-was-divided-and-managed)
+- [Difficulties encountered, challenges overcome, and lessons learned](#difficulties-encountered-challenges-overcome-and-lessons-learned)
+- [Comments/feedback on the assignment itself](#commentsfeedback-on-the-assignment-itself)
+
+
+
 # Introduction
 Building upon the foundations established in our previous labs, this report details our exploration of advanced testing techniques, specifically mutation testing and web application testing. As a continuation of the last lab, in this lab, we're doing two types of software testing. First, we're using Pitest to see how good our old tests are at finding bugs in the `Range` and `DataUtilities` code. We'll try to make our tests better so they catch more bugs (increase the "mutation score").
 
