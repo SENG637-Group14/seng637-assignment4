@@ -588,7 +588,129 @@ Overall, mutation testing is a valuable tool for improving software quality, but
 
 # Explain your SELENUIM test case design process
 
+We chose the **Air Canada** website as our SUT (System Under Test). Before creating test scripts, we manually performed each functionality to understand the expected behavior and identify any pre-conditions. For instance, we created a valid user account to test the login functionality and gathered sample booking references for the flight status check. The test case design process occurred as follows:
+
+**Exploration and Tool Selection**  
+First, we initially configured Selenium IDE for Chrome but later switched to Firefox as the primary browser. Recent Chrome updates have introduced stricter automation restrictions, making Selenium IDE less reliable. Firefox was chosen because it provided a more seamless record-and-replay process for the Air Canada website, reducing test execution errors and improving stability.
+
+**SUT Exploration and Functionality Identification**  
+After selecting the SUT, we explored the Air Canada website to identify key functionalities that needed to be tested. Given the website’s focus on flight-related services, we selected the most critical and frequently used functionalities, as shown in the table below;
+
+**Tested Functionalities and Their Definitions**  
+
+| **Tested Functionality**         | **Definition of the Functionality**                          |
+|----------------------------------|-------------------------------------------------------------|
+| **Car Rental**                   | Testing search and booking processes for car rentals.       |
+| **Check Deals for Trip**          | Verifying the availability and accuracy of promotional offers. |
+| **Flight Status Check**           | Ensuring flight statuses are retrieved correctly.           |
+| **Forgot Password**               | Validating the password reset functionality with valid and invalid emails. |
+| **Invalid Search**                | Testing error handling for incorrect search inputs.         |
+| **Invalid Sign-In**               | Verifying error messages for failed login attempts.         |
+| **Trip Invalid Booking Reference**| Ensuring correct error messages for invalid booking references. |
+| **Test I18n (Internationalization)** | Validating language switching between English and French. |
+
+
+**Pre-requirements and Setup**  
+We ensured all preconditions were met before executing the tests. This included:  
+- Configuring Firefox with a custom `User-Agent` to mimic real browser interactions.  
+- Setting up explicit waits to ensure page elements were fully loaded before proceeding.  
+- Investigating test data inputs, such as valid and invalid login credentials, booking references, and search queries.  
+
+**Verification and Assertion Points**  
+We identified key points in each functionality where assertions and verifications would be applied:  
+- **Verification:** Ensured expected elements were visible before performing actions.  
+- **Assertion:** Checked for expected text, element presence, and system responses after interactions.
+
+**Test Recording and Execution**  
+Recorded the tests and validated user workflows. During this phase:  
+- Each test was recorded using a combination of clicks, form entries, and navigation actions.  
+- Various types of input data were used to test positive, negative, and boundary cases.  
+- We manually verified and corrected recorded steps to handle dynamic elements and asynchronous behavior.  
+
+**Test Review and Optimization**  
+After recording, we reviewed the test cases to:  
+- **Remove Unnecessary Steps:** Eliminated redundant steps such as mouse movements and hovers that did not contribute to functionality validation.  
+- **Add Explicit Waits:** Ensured stability by adding explicit waits where necessary to handle dynamic content.  
+- **Correct Locator Issues:** Updated element locators (CSS selectors, XPaths) to ensure reliability in repeated executions.  
+
+### **Error Handling and Retesting**  
+Several test cases were re-recorded due to element identification issues or timeouts. Problems such as delayed page loads, hidden elements, and inconsistent pop-ups were addressed by:  
+- Increasing wait time for dynamic elements.  
+- Using `waitForElementVisible` and `waitForElementClickable` commands.  
+- Correcting incorrect locators to prevent test failures.  
+
+<img src="media/Air CanadaTestSuite.png" alt="media/Air CanadaTestSuite.png" >
+
+**Test Summary**  
+After addressing all challenges and refining the test suite, the following outcomes were achieved:  
+- **Total Test Cases:** 8  
+- **Execution Success Rate:** 100%  
+- **Execution Time:** Optimized through explicit waits and streamlined test steps.  
+- **Error Handling Efficiency:** Issues related to dynamic element visibility, iFrames, and delayed content loading were effectively mitigated.
+
+
+
+**Test Logistics**
+
+The team began testing once the following conditions were met.
+
+- Air Canada website (SUT) was available for testing.
+- Test Specifications/requirements were finalized.
+- The test environment was properly set up.
+
+**Test Environment**
+
+| **Component**         | **Details**                          |
+|-----------------------|--------------------------------------|
+| **Testing Tool**       | Selenium IDE                        |
+| **Primary Browser**    | Firefox (Version 136.0.2, 64-bit)   |
+| **Secondary Browser**  | Chrome (Version 134.0.6998.118, 64-bit) |
+| **Operating Systems**  | Windows 11, macOS Monterey          |
+| **Test Execution Mode** | Record and Replay                  |
+| **Automation Scope**   | GUI Testing for Air Canada Website  |
+
+
+
 # Explain the use of assertions and checkpoints
+
+In the GUI testing, assertions and checkpoints were crucial in validating that the web application behaved as expected during testing. The roles of these concepts in our exercise are explained below;
+
+**1. Assertions**
+   Assertions were used to verify that specific conditions or states were met during the execution of the test. They served as a way to ensure that the application functioned as intended. In the Air Canada GUI test, assertions helped in validating various elements, such as the page title, displayed text, or visibility of certain UI components.
+
+   **Examples of assertions in the Air Canada GUI test:**
+   - **Text Assertion**: Ensured that the expected text was visible on the page, such as the page title or specific labels. For example:
+     ``` 
+     assertText on css=.ac-page-title with value "Where can we take you?" 
+     ```
+     This assertion checked that the page title displayed the correct text when switching to a specific language.
+   
+   - **Element Visibility Assertion**: Ensured that a certain element was visible within a specified timeout. For example:
+     ```
+     waitForElementVisible on id=abcFormFieldElement70 with value 30000
+     ```
+     This checked if the form field was visible to the user within 30 seconds.
+
+   - **Element Not Visible Assertion**: Verified that a specific element was no longer visible after performing an action, which was useful in testing interactions like hiding elements:
+     ```
+     waitForElementNotVisible on css=.ac-page-title with value 30000
+     ```
+
+**2. Checkpoints**
+   Checkpoints were essentially markers or points where the test execution was paused, allowing the tester to verify the application's state at those specific moments. They did not automatically validate outcomes but provided visibility into the current state of the application at different steps.
+
+   **Examples of checkpoints in the Air Canada test:**
+   - **Waiting for an Element to be Visible**: Before proceeding to the next step, the test paused until the required element became visible, ensuring that all dynamic content was fully loaded. For example:
+     ```
+     waitForElementVisible on id=abcFormFieldElement70 with value 30000
+     ```
+     This checkpoint ensured that the input field was visible before proceeding with further actions, preventing issues where elements might not be ready for interaction.
+
+   - **Wait for Changes**: Checkpoints like `waitForElementNotVisible` ensured that the system had completed the previous action, such as hiding an element or updating the UI.
+
+---
+
+In summary, **assertions** validated expected results, while **checkpoints** ensured that the test execution progressed only when the application was in the right state, helping avoid errors and improving test stability. Both were essential for verifying that the Air Canada website functioned as expected across different interactions.
 
 # how did you test each functionaity with different test data
 
@@ -598,12 +720,31 @@ The team worked collaboratively throughout the entire project, with each member 
 
 **Teamwork and Responsibilities**
 
+**Part 1: Mutation Coverage**
+
 | **Task**                           | **Responsibility** |
 |-------------------------------------|--------------------|
 | **Requirement Analysis**           | All team members reviewed the **RangeTest** and **DataUtilitiesTest** code to identify key areas for mutation and GUI testing. We defined testing objectives using **PITTEST** and **Selenium**. |
 | **Test-Case Design**               | Each member designed test cases for specific methods, focusing on statement, branch, and condition coverage, and ensuring mutation testing goals were met. |
 | **Test Execution & Coverage Analysis** | The team ran tests using **PITTEST** to assess mutation coverage, analyzed the results, and refined the tests to maximize mutation detection. |
 | **Code Review & Test Consolidation** | The team reviewed test cases and mutation results, removed ineffective tests, and consolidated the most effective ones for optimal coverage. |
+
+**Part 2: Automated Web Testing using Selenium**
+
+Here’s the revised table with each test case on a different row:
+
+| **Student Name** | **Test Case**                                     |
+|------------------|--------------------------------------------------|
+| **Taiwo**        | Car rental                                        |
+|                  | Invalid Search                                    |
+| **Remi**         | Check Deals for Trip                             |
+|                  | Invalid Sign In                                   |
+| **Gabriel**      | Flight Status Check                               |
+|                  | Trip Invalid Booking Reference                    |
+| **Ayo**          | Forgot Password                                   |
+|                  | Test I18n (internationalization)                  |
+
+All test cases were collated at the end to form a complete test suite, ensuring full coverage of the Air Canada website's functionalities.
 
 The final report was a collaborative effort, with each team member contributing to different sections.
 
