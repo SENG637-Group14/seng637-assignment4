@@ -714,7 +714,62 @@ In summary, **assertions** validated expected results, while **checkpoints** ens
 
 # how did you test each functionaity with different test data
 
-# How the team work/effort was divided and managed
+We tested each functionality with different test data to ensure comprehensive coverage and robustness of the application. Here's how we approached testing each functionality:
+
+**Car Rental**
+
+- **Date Ranges**: We tested with various date combinations, including same-day rentals, multi-day rentals, and rentals spanning different months.
+- **Locations**: We used different pickup and drop-off locations, including airports, city centers, and suburban areas.
+- **Vehicle Types**: We selected various vehicle categories such as economy, compact, SUV, and luxury cars.
+- **Driver Age**: We tested with different driver ages to verify age-related restrictions and pricing variations.
+
+**Check Deals for Trip**
+
+- **Destinations**: We searched for deals to popular and less common destinations.
+- **Travel Dates**: We used a range of dates, including peak seasons, off-peak times, and holidays.
+- **Trip Duration**: We varied the length of stay to test different deal offerings.
+- **Passenger Types**: We tested with different combinations of adults, children, and infants.
+
+**Flight Status Check**
+
+- **Flight Numbers**: We used valid and invalid flight numbers to test error handling.
+- **Dates**: We checked for past, current, and future flight dates.
+- **Routes**: We tested both domestic and international flight routes.
+- **Airlines**: We included Air Canada flights and codeshare partner flights.
+
+**Forgot Password**
+
+- **Email Addresses**: We tested with valid registered emails, unregistered emails, and invalid email formats.
+- **Account Types**: We used different account types (e.g., Aeroplan members, non-members) to verify the process.
+- **Reset Link Expiration**: We tested the validity of reset links at different time intervals.
+
+**Invalid Search**
+
+- **Empty Fields**: We submitted searches with various combinations of empty required fields.
+- **Invalid Data Formats**: We input incorrectly formatted dates, flight numbers, and passenger information.
+- **Non-existent Routes**: We searched for flights between airports not served by Air Canada.
+
+**Invalid Sign In**
+
+- **Incorrect Passwords**: We attempted logins with valid usernames but incorrect passwords.
+- **Non-existent Accounts**: We tried signing in with email addresses not registered in the system.
+- **Locked Accounts**: We tested the behavior after multiple failed login attempts.
+
+**Trip Invalid Booking Reference**
+
+- **Incorrect Formats**: We input booking references with invalid characters and lengths.
+- **Non-existent References**: We used booking numbers that didn't exist in the system.
+- **Expired Bookings**: We tested with references from past, completed trips.
+
+**Test I18n (Internationalization)**
+
+- **Language Switching**: We toggled between available languages (English, French, and others if available).
+- **Regional Settings**: We tested date formats, currency displays, and time zones for different regions.
+- **Content Localization**: We verified that key elements like terms and conditions were properly translated.
+
+By using this diverse range of test data for each functionality, we ensured that the GUI testing could handle various scenarios, edge cases, and potential user inputs, thus validating the system's reliability and user-friendliness across different use cases.
+
+# How the teamwork/effort was divided and managed
 
 The team worked collaboratively throughout the entire project, with each member contributing to different aspects. The project was divided and executed as follows:
 
