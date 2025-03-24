@@ -245,7 +245,7 @@ Removal of method calls (getItemCount, getValue, etc.).
 
 ## Improved DataUtilities Test Suite
 
-## Summary of Coverage Changes:
+**Summary of Coverage Changes:**
 
 **Previous Coverage:**
 - **Line Coverage:** **39%**
@@ -276,7 +276,7 @@ Removal of method calls (getItemCount, getValue, etc.).
    #### **Testing Null Values:**
    - **Test Case:** `testCalculateRowTotalWithNullValues`
      - **Improvement:** Before, no tests covered cases where some values were missing (i.e., `null`). We added a test to make sure the code ignores `null` values when calculating row totals.
-     - **Outcome:** This made sure the code works well even with missing data, improving coverage.
+     - **Outcome:** This ensured the code works well even with missing data, improving coverage.
 
    #### **Testing Boundary Conditions:**
    - **Test Case:** `testCalculateRowTotalWithZeroSubstitution`
