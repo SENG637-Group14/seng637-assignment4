@@ -752,9 +752,7 @@ The final report was a collaborative effort, with each team member contributing 
 
 # Difficulties encountered, challenges overcome, and lessons learned
 
-### Difficulties Encountered, Challenges Overcome, and Lessons Learned
-
-During the project, we faced a few challenges but overcame them with teamwork and problem-solving.
+During Part 1 of the Lab Exercise, we faced a few challenges but overcame them with teamwork and problem-solving.
 
 1. **Improving Mutation Coverage**: At first, our mutation coverage wasn’t improving much. The test cases didn’t seem to make a difference. After reviewing the coverage report line by line, we found areas where our tests were lacking. By fixing these gaps and focusing on important tests, we were able to improve our mutation coverage.
 
@@ -765,7 +763,11 @@ During the project, we faced a few challenges but overcame them with teamwork an
 **Lessons Learned**:  
 - Thoroughly analyzing coverage reports line by line can help identify gaps and refine test cases effectively.  
 - Flexibility and adaptability are key, especially when dealing with tool-related issues (like switching from **Chrome** to **Mozilla Firefox** in Selenium).  
-- Mutation testing results can be misleading if equivalent mutants are not properly handled. Fine-tuning the tests to address such cases is crucial.  
+- Mutation testing results can be misleading if equivalent mutants are not properly handled. Fine-tuning the tests to address such cases is crucial.
+
+For Part 2, during testing, several challenges were faced. One major issue was the instability of Selenium when running tests in different environments and browsers. For instance, tests yielded varying results between Chrome and Firefox, with some elements not being properly detected on one browser while performing fine on the other. We also encountered difficulties with captchas as the website detected the Selenium tests as bots, causing interruptions in the testing process. Furthermore, Selenium's performance was sometimes sluggish, leading to lag and delayed test execution, especially when handling dynamic elements. 
+
+Despite these issues, we overcame them by adapting our testing approach, refining our environment configurations, and using different test strategies to mitigate these challenges.
 
 # Comments/feedback on the assignment itself
 
