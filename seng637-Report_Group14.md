@@ -523,7 +523,7 @@ In this analysis, we evaluate how well each test class works by examining its co
 3. **Mutant Killing**:  
    **RangeTest** kills many mutants, but we still found several equivalent mutants that were not eliminated. These mutants did not change the program’s behavior, so they should have been caught. Improving the tests to better handle subtle changes in logic, especially around boundaries, will reduce the number of equivalent mutants and provide a more accurate mutation score.
 
-**Effectiveness Summary**
+**Summary**
 
 - **DatautilitiesTest**: It does a great job testing standard cases, but we need to enhance coverage by adding more edge cases. Reducing equivalent mutants will improve the reliability of the mutation score.
   
