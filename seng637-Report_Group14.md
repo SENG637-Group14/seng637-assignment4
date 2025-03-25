@@ -1,6 +1,6 @@
 **SENG 637 - Dependability and Reliability of Software Systems**
 
-**Lab. Report \#4 – Mutation Testing and Web app testing**
+**Lab. Report \#4 – Mutation Testing and Web App Testing**
 
 | Group #: 14     |     |
 | -------------- | --- |
@@ -21,7 +21,7 @@
 - [Why do we need mutation testing? Advantages and disadvantages of mutation testing](#why-do-we-need-mutation-testing-advantages-and-disadvantages-of-mutation-testing)
 - [Explain your SELENUIM test case design process](#explain-your-selenuim-test-case-design-process)
 - [Explain the use of assertions and checkpoints](#explain-the-use-of-assertions-and-checkpoints)
-- [how did you test each functionaity with different test data](#how-did-you-test-each-functionaity-with-different-test-data)
+- [How did you test each functionality with different test data](#How-did-you-test-each-functionality-with-different-test-data)
 - [How the teamwork/effort was divided and managed](#how-the-teamworkeffort-was-divided-and-managed)
 - [Difficulties encountered, challenges overcome, and lessons learned](#difficulties-encountered-challenges-overcome-and-lessons-learned)
 - [Comments/feedback on the assignment itself](#commentsfeedback-on-the-assignment-itself)
@@ -29,11 +29,16 @@
 
 
 # Introduction
-Building upon the foundations established in our previous labs, this report details our exploration of advanced testing techniques, specifically mutation testing and web application testing. As a continuation of the last lab, in this lab, we're doing two types of software testing. First, we're using Pitest to see how good our old tests are at finding bugs in the `Range` and `DataUtilities` code. We'll try to make our tests better so they catch more bugs (increase the "mutation score").
 
-Second, we're using Selenium to test "Air Canada" website. We'll create tests to check if different parts of the website work correctly.
+This report builds on the concepts introduced in previous labs, focusing on two advanced testing techniques: **mutation testing** and **web application testing**.
 
-You can find the website tests in the root folder (.side files), and the updated bug-finding tests in the "org.jfree.data" part of the "JFreeChart_Lab4" folder. 
+1. **Mutation Testing with PITEST:**  
+   We evaluated the effectiveness of our existing test suite for the `Range` and `DataUtilities` classes by running PITEST. The goal was to improve our tests to detect more mutations and enhance the overall mutation score. The refined test cases are located in the `org.jfree.data` directory of the `JFreeChart_Lab4` folder.
+
+2. **Web Application Testing with Selenium:**  
+   We developed and executed Selenium tests to validate the functionality of the **Air Canada** website. These tests ensure that critical features perform as expected. The `.side` files containing these tests can be found in the root directory.
+
+This approach strengthened our ability to identify bugs in both application logic and web interfaces.
 
 # Analysis of 10 Mutants of the Range class 
 
@@ -200,6 +205,14 @@ By introducing small code changes (mutants), the test suite was evaluated to see
 
 ## For DataUtitlities Test
 
+**Coverage Stats**
+
+| Metric               | Coverage (%) | Coverage to Total           |
+|----------------------|--------------|-----------------------------|
+| **Line Coverage**     | 39%          | 31 out of 80 lines          |
+| **Mutation Coverage** | 33%          | 226 out of 687 branches     |
+| **Test Strength**     | 94%          | 226 out of 240 methods      |
+
 **Mutation Summary**
 - Mutants Killed: 219
 - Mutants Survived: 14
@@ -261,21 +274,38 @@ Removal of method calls (getItemCount, getValue, etc.).
 
 <img src="media/2-DU_NOCoverage.png" alt="2-DU_NOCoverage.png" >
 
-**Improved DataUtilities Test Suite**
+---
 
-**Summary of Coverage Changes:**
-
-**Previous Coverage:**
-- **Line Coverage:** **39%**
-- **Mutation Coverage:** **33%**
-- **Test Strength:** **94%**
+## **Improved DataUtilities Test Suite**
 
 **Updated Coverage:**
 - **Line Coverage:** **66%** (53 out of 80 lines are now tested)
-- **Branch Coverage:** **59%** (405 out of 687 branches are now tested)
-- **Method Coverage:** **94%** (405 out of 432 methods are now tested)
+- **Mutation Coverage:** **59%** (405 out of 687 branches are now tested)
+- **Test Strength:** **94%** (405 out of 432 methods are now tested)
 
 <img src="media/12-DU_PITMutation_Improved.png" alt="12-DU_PITMutation_Improved.png" >
+
+**Coverage Comparison:**
+
+| Metric               | Previous Coverage | Updated Coverage            | Improvement |
+|----------------------|-------------------|-----------------------------|-------------|
+| **Line Coverage**     | 39%               | 66%  | +27%        |
+| **Mutation Coverage** | 33%               | 59%  | +26%        |
+| **Test Strength**     | 94%               | 94%  | No change   |
+
+**1. Line Coverage:**
+   Line coverage improved from **39%** to **66%**. This means **14 more lines of code** are now covered by tests. These improvements came from:
+   - Adding tests for **null values** and **empty rows**.
+   - Checking for **boundary conditions** like zero values and handling invalid column indexes.
+
+**2. Mutation Coverage:**
+    Mutation coverage increased from **33%** to **59%**, covering an extra **26%** of decision points in the code. This was due to:
+   - Adding tests for handling **invalid column indices**.
+   - Testing cases where the code had been **mutated** (e.g., changed from addition to subtraction).
+
+**3. Test Strength:**
+   The test strength stayed at **94%**, meaning the tests are very effective at finding problems. Even with new tests added, this number shows that the tests are still strong and catching most issues.
+
 
 **How We Improved the Coverage:**
 
@@ -289,7 +319,9 @@ Removal of method calls (getItemCount, getValue, etc.).
 
 2. **Adding New Test Cases:**
    
-   We added tests to cover the gaps that were identified:
+   We added tests to cover the gaps that were identified: The test suite was expanded from **22** to over **46** test cases. Targeted new test cases were designed based on the surviving and uncovered mutations.
+
+<img src="media/16-DUNew_TS.png" alt="media/16-DUNew_TS.png" >
 
    **Testing Null Values:**
    - **Test Case:** `testCalculateRowTotalWithNullValues`
@@ -316,48 +348,23 @@ Removal of method calls (getItemCount, getValue, etc.).
      - **Improvement:** We added a test for rows with different numbers of columns. This helped ensure the code calculates totals correctly for rows with varying column counts.
      - **Outcome:** This test improved both branch and line coverage by addressing cases with different row structures.
 
-3. **Reviewing Existing Tests:**
+4. **Reviewing Existing Tests:**
    We also improved some of the tests we had before, making sure all conditions (like checking for zero or negative values) were fully covered. This helped fill in gaps where the tests weren’t thorough enough.
 
 ---
-**Improvements and Results:**
-
-**Increased Test Cases**  
-   - The test suite was expanded from **22** to over **46** test cases. Targeted new test cases were designed based on the surviving and uncovered mutations.
-
-<img src="media/16-DUNew_TS.png" alt="media/16-DUNew_TS.png" >
-
-
-**1. Line Coverage:**
-   Line coverage improved from **39%** to **66%**. This means **14 more lines of code** are now covered by tests. These improvements came from:
-   - Adding tests for **null values** and **empty rows**.
-   - Checking for **boundary conditions** like zero values and handling invalid column indexes.
-
-**2. Branch Coverage:**
-   Branch coverage increased from **33%** to **59%**, covering an extra **26%** of decision points in the code. This was due to:
-   - Adding tests for handling **invalid column indices**.
-   - Testing cases where the code had been **mutated** (e.g., changed from addition to subtraction).
-
-**3. Mutation Coverage:**
-   Mutation coverage stayed high at **94%**, meaning that the tests are still strong in catching bugs when the code is mutated. The new tests helped to catch the remaining mutants.
-
-**4. Test Strength:**
-   The test strength stayed at **94%**, meaning the tests are very effective at finding problems. Even with new tests added, this number shows that the tests are still strong and catching most issues.
-
-
-   
 
 ## For Range Test
 
-**Test Coverage Analysis for Range.java**
 ---
-<img src="media/13-RangeTS_PITMutation.png" alt="media/13-RangeTS_PITMutation.png" >
+**Test Coverage Analysis for Range.java**
 
 | Metric              | Coverage (%) | Coverage to Total   |
 |---------------------|--------------|---------------------|
 | **Line Coverage**    | 88%          | 91/103              |
 | **Mutation Coverage**| 56%          | 707/1259            |
 | **Test Strength**    | 63%          | 707/1118            |
+
+<img src="media/13-RangeTS_PITMutation.png" alt="media/13-RangeTS_PITMutation.png" >
 
 
 1. **Line Coverage (88%)**:
@@ -374,51 +381,30 @@ Removal of method calls (getItemCount, getValue, etc.).
 
 The original test coverage for `Range.java` was good, but specific improvements were necessary to address the surviving mutants and uncovered lines. By reviewing the PITEST report, adding new targeted tests, and refining existing ones, we were able to improve mutation coverage and test strength, making the test suite more robust. The next steps will involve continuously monitoring and refining the tests to ensure full coverage and detection of possible faults.
 
-**Updated Mutation Statistics Breakdown**
+**Mutation Analysis Summary**
 
-| Metric              |               |
-|---------------------|---------------|
-| Killed    | 707        |
-| Survived | 411         |
-| NO_COVERAGE   | 141          |
+| **Category**     | **Count** | **Description**                                                                 |
+|------------------|-----------|---------------------------------------------------------------------------------|
+| **Killed**        | 707       | Mutations that triggered test failures, ensuring good test coverage.            |
+|                   |           | - Conditional boundary changes                                                 |
+|                   |           | - Negating conditionals                                                         |
+|                   |           | - Substituting constants                                                        |
+|                   |           | - Removing method calls and constructors                                       |
+|                   |           | - Modifying arithmetic operations                                              |
+| **Survived**      | 707       | Mutations that did **not** affect test outcomes, indicating missed scenarios.  |
+|                   |           | - Incrementing/decrementing variables                                           |
+|                   |           | - Swapping operations with no impact                                           |
+| **No Coverage**   | 141       | Mutations that were **not executed** by the tests, showing gaps in coverage.    |
+|                   |           | - Boolean returns in `Range::equals`                                           |
+|                   |           | - Integer substitutions and field operations                                  |
+
+**Total Mutations:** 1259 mutations generated
 
 ---
 
-**Total Mutations:**
-
-- **1259 mutations generated**
-
-**Killed Mutations:**
-- **707 mutations killed** → Tests successfully identified these changes.
-- Mutations that resulted in test failures, indicating good test coverage.
-  Includes operations such as:
-    - Conditional boundary changes
-    - Negating conditionals
-    - Substituting constants
-    - Removing method calls and constructors
-    - Modifying arithmetic operations (addition, subtraction, multiplication, etc.)
-
-**Survived:**
-- **707 mutations survived or had no coverage**
-    - Survived: Mutations that did **not affect** test outcomes.
-    -  Mutations that survived, meaning the tests did **not** catch these changes.
-      These include:
-        - Incrementing/decrementing double/local variables
-        - Swapping operations that did not affect test outcomes
-
-     
-**No Coverage:**
-- **141 mutations had no coverage**
-     - No Coverage: Mutations that were **not executed** by tests.
-     - Mutations marked with `NO_COVERAGE` were **not exercised by the tests**.
-       Includes changes in areas such as:
-        - Boolean returns in `Range::equals`
-        - Integer substitutions and field operations
-
-
 ## Improved Test Suite Report for `Range` Class
 
-The updated suite demonstrates a significant boost in mutation coverage, test strength, and overall code coverage.
+The updated suite shows a significant boost in mutation coverage, test strength, and overall code coverage.
 
 <img src="media/14-Range__Improved.png" alt="media/14-Range__Improved.png" >
 
@@ -475,7 +461,7 @@ To improve the test coverage and address these concerns, several strategic steps
 
 **Approach to Improving Coverage:**
 
-1. **Line Coverage**
+**1. Line Coverage**
 Line coverage measures how much of the actual code is being executed during testing. The current line coverage of 88% indicates that most of the code paths are tested, but there are still parts of the code that aren't being executed.
 
 - **Implemented Tests**: 
@@ -484,7 +470,7 @@ Line coverage measures how much of the actual code is being executed during test
     - **Method `contains(double value)`**: Tested with boundary values to ensure correct inclusion/exclusion logic.
     - **Method `intersects(double b0, double b1)`**: Added tests to check when ranges partially or fully intersect.
 
-**2. **Mutation Coverage**
+**2. Mutation Coverage**
 Mutation coverage measures how many of the mutants (small changes in the code) are detected by the test cases. The current mutation coverage is 56%, indicating that the tests could be improved to detect more mutants, especially those related to boundary conditions and range comparisons.
 
 - **Implemented Tests**: 
@@ -506,11 +492,12 @@ Test strength measures how effectively the tests kill mutants. With a test stren
 - **Better Edge Case Handling**: Tests for `NaN` and `null` inputs were introduced, improving the test suite’s robustness.
 - **Combination Tests**: Methods that work in conjunction, such as `getLowerBound()` and `getUpperBound()`, were tested together to ensure correct interaction.
 
----
-
 The new test suite significantly enhances the reliability and effectiveness of the `Range` class.
 
+
 # Analysis drawn on the effectiveness of each of the test classes
+
+---
 
 In this analysis, we evaluate how well each test class works by examining its coverage, strength, and ability to detect faults, including how effectively it handles edge cases. Here's what we found:
 
@@ -609,7 +596,7 @@ Overall, mutation testing is a valuable tool for improving software quality, but
 We chose the **Air Canada** website as our SUT (System Under Test). Before creating test scripts, we manually performed each functionality to understand the expected behavior and identify any pre-conditions. For instance, we created a valid user account to test the login functionality and gathered sample booking references for the flight status check. The test case design process occurred as follows:
 
 **Exploration and Tool Selection**  
-First, we initially configured Selenium IDE for Chrome but later switched to Firefox as the primary browser. Recent Chrome updates have introduced stricter automation restrictions, making Selenium IDE less reliable. Firefox was chosen because it provided a more seamless record-and-replay process for the Air Canada website, reducing test execution errors and improving stability.
+A first, we configured Selenium IDE for Chrome but later switched to Firefox as the primary browser. Recent Chrome updates have introduced stricter automation restrictions, making Selenium IDE less reliable. Firefox was chosen because it provided a more seamless record-and-replay process for the Air Canada website, reducing test execution errors and improving stability.
 
 **SUT Exploration and Functionality Identification**  
 After selecting the SUT, we explored the Air Canada website to identify key functionalities that needed to be tested. Given the website’s focus on flight-related services, we selected the most critical and frequently used functionalities, as shown in the table below;
@@ -651,7 +638,7 @@ After recording, we reviewed the test cases to:
 - **Add Explicit Waits:** Ensured stability by adding explicit waits where necessary to handle dynamic content.  
 - **Correct Locator Issues:** Updated element locators (CSS selectors, XPaths) to ensure reliability in repeated executions.  
 
-### **Error Handling and Retesting**  
+**Error Handling and Retesting**  
 Several test cases were re-recorded due to element identification issues or timeouts. Problems such as delayed page loads, hidden elements, and inconsistent pop-ups were addressed by:  
 - Increasing wait time for dynamic elements.  
 - Using `waitForElementVisible` and `waitForElementClickable` commands.  
@@ -680,14 +667,12 @@ The team began testing once the following conditions were met.
 
 | **Component**         | **Details**                          |
 |-----------------------|--------------------------------------|
+| **Automation Scope**   | GUI Testing for Air Canada Website  |
 | **Testing Tool**       | Selenium IDE                        |
 | **Primary Browser**    | Firefox (Version 136.0.2, 64-bit)   |
 | **Secondary Browser**  | Firefox (Version 136.0.2, 64-bit) |
 | **Operating Systems**  | Windows 11, macOS Monterey          |
 | **Test Execution Mode** | Record and Replay                  |
-| **Automation Scope**   | GUI Testing for Air Canada Website  |
-
-
 
 # Explain the use of assertions and checkpoints
 
