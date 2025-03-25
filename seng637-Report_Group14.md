@@ -784,7 +784,7 @@ The team worked collaboratively throughout the entire project, with each member 
 |-------------------------------------|--------------------|
 | **Requirement Analysis**           | All team members reviewed the **RangeTest** and **DataUtilitiesTest** code to identify key areas for mutation and GUI testing. We defined testing objectives using **PITTEST** and **Selenium**. |
 | **Test-Case Design**               | Each member designed test cases for specific methods, focusing on statement, branch, and condition coverage, and ensuring mutation testing goals were met. |
-| **Test Execution & Coverage Analysis** | The team ran tests using **PITTEST** to assess mutation coverage, analyzed the results, and refined the tests to maximize mutation detection. |
+| **Test Execution & Coverage Analysis** | The team ran tests using **PITEST** to assess mutation coverage, analyzed the results, and refined the tests to maximize mutation detection. |
 | **Code Review & Test Consolidation** | The team reviewed test cases and mutation results, removed ineffective tests, and consolidated the most effective ones for optimal coverage. |
 
 **Part 2: Automated Web Testing using Selenium**
